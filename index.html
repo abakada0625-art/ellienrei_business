@@ -187,7 +187,7 @@
         .gallery-overlay span { color: white; font-weight: 700; font-size: 1.2rem; transform: translateY(15px); transition: 0.3s ease; text-shadow: 0 1px 3px rgba(0,0,0,0.5);}
         .gallery-item:hover .gallery-overlay span { transform: translateY(0); }
 
-        /* Piso WiFi (keeps dark style, but adapts text) */
+        /* Piso WiFi */
         .pisowifi { padding: 4rem 1rem; background: var(--dark-bg); color: white; position: relative; }
         .pisowifi .section-title { color: white; text-shadow: var(--shadow-glow); }
         .pisowifi .section-subtitle { color: #cbd5e1; }
@@ -209,9 +209,9 @@
         @keyframes pulseGlow { 0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.6); transform: scale(1); } 70% { box-shadow: 0 0 0 15px rgba(255, 215, 0, 0); transform: scale(1.02); } 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); transform: scale(1); } }
         .promo-badge { background: linear-gradient(135deg, var(--accent-gold), #ffa000); color: #1e1a00; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 800; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.8rem; margin: 0 auto; animation: pulseGlow 2s infinite; text-align: center; flex-wrap: wrap; justify-content: center; }
 
-        /* Contact Section - mas maraming spacing */
+        /* Contact Section - with fixed social link hover visibility */
         .contact { padding: 4rem 1rem; background: var(--primary-bg); }
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; } /* increased gap */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
         .contact-card { 
             background: var(--contact-card-bg); 
             padding: 2rem; 
@@ -221,18 +221,47 @@
             display: flex; 
             gap: 1.5rem; 
             align-items: flex-start;
-            margin-bottom: 0; /* no extra margin, gap handles spacing */
+            margin-bottom: 0;
         }
         .contact-card:hover { transform: translateX(5px); background: var(--contact-card-hover); }
         .contact-card-icon { font-size: 2rem; color: var(--accent-pink); min-width: 55px; }
         .contact-card-content h3 { color: var(--text-primary); font-weight: 800; margin-bottom: 0.8rem; font-size: 1.3rem; }
         .contact-card-content p, .contact-card-content a { color: var(--text-secondary); font-weight: 500; font-size: 1rem; word-break: break-word; line-height: 1.5; }
-        .social-link { background: linear-gradient(135deg, #1877F2, #0e5a2); color: white; padding: 0.7rem 1.2rem; border-radius: 40px; font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.6rem; transition: 0.3s ease; margin-top: 0.8rem; margin-right: 0.8rem; }
-        .social-link:hover { transform: translateY(-3px); color: white; }
+        
+        /* FIXED: Social links hover - always visible and with better contrast */
+        .social-link {
+            background: linear-gradient(135deg, #1877F2, #0e5a2);
+            color: white !important;
+            padding: 0.7rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.3s ease;
+            margin-top: 0.8rem;
+            margin-right: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-decoration: none;
+        }
+        .social-link:hover {
+            transform: translateY(-3px) scale(1.02);
+            color: white !important;
+            background: linear-gradient(135deg, #0e5a2, #1877F2);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-color: rgba(255,255,255,0.5);
+        }
+        /* Ensure text inside social link remains white on hover */
+        .social-link:hover i, 
+        .social-link:hover span {
+            color: white !important;
+        }
+        
         .contact-map { border-radius: var(--radius-lg); overflow: hidden; height: 350px; box-shadow: var(--shadow-lg); border: 3px solid var(--secondary-bg); background: #e2e8f0; }
         .contact-map iframe { width: 100%; height: 100%; border: none; }
 
-        /* CTA Section (Call & Messenger) */
+        /* CTA Section */
         .cta-section {
             padding: 3rem 1rem;
             background: var(--secondary-bg);
@@ -270,7 +299,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(16,185,129,0.3);
         }
-        .btn-cta-call:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(16,185,129,0.4); }
+        .btn-cta-call:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(16,185,129,0.4); color: white; }
         .btn-cta-messenger {
             background: linear-gradient(135deg, #0084ff, #0063d1);
             color: white;
@@ -284,7 +313,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(0,132,255,0.3);
         }
-        .btn-cta-messenger:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,132,255,0.4); }
+        .btn-cta-messenger:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,132,255,0.4); color: white; }
 
         /* Footer */
         .footer { background: var(--footer-bg); color: var(--footer-text); padding: 3rem 1rem 1.5rem; position: relative; }
@@ -496,7 +525,7 @@
     </div>
 </section>
 
-<!-- CONTACT SECTION with improved spacing between cards -->
+<!-- CONTACT SECTION with fixed social link hover -->
 <section class="contact" id="contact">
     <div class="container">
         <div class="section-header fade-in-up">
@@ -587,7 +616,6 @@
     } else if (savedTheme === 'disabled') {
         setTheme(false);
     } else {
-        // Check system preference
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         setTheme(prefersDark);
     }
