@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ellie 'N Rei Sa Labak - Premium Printing, Internet Cafe, and Piso WiFi Services in Gen. Aguinaldo, Cavite">
+    <title>Ellie 'N Rei Sa Labak | Printing • Internet Cafe • Piso WiFi</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Colors */
+            --primary-bg: #FFFFFF;
+            --secondary-bg: #F0F4F8;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --text-primary: #1A1A1A;
+            --text-secondary: #555555;
+            --text-white: #f8fafc;
+            --accent-pink: #e81c62;
+            --accent-pink-alt: #ff5f9e;
+            --accent-gold: #FFD700;
+            --accent-cyan: #00f2fe;
+            --border-light: #E8E8E8;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 24px rgba(232, 28, 98, 0.15);
+            --shadow-lg: 0 12px 32px rgba(232, 28, 98, 0.25);
+            --shadow-glow: 0 0 20px rgba(232, 28, 98, 0.6);
+            
+            /* Spacing & Radius */
+            --space-lg: 2rem;
+            --space-2xl: 5rem;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 30px;
+            
+            /* Transitions */
+            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body { font-family: 'Poppins', sans-serif; color: var(--text-primary); background-color: var(--primary-bg); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: var(--transition-base); }
+        img { max-width: 100%; height: auto; display: block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); }
+
+        /* ============================================
+           GLASSMORPHISM NAVBAR
+           ============================================ */
+        .navbar {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); padding: 1rem var(--space-lg); transition: var(--transition-base);
+        }
+        .navbar.scrolled { background: rgba(255, 255, 255, 0.9); box-shadow: var(--shadow-md); }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; background: linear-gradient(135deg, var(--accent-pink), #8a2387); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: flex; align-items: center; gap: 0.5rem; }
+        .nav-menu { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+        .nav-link { font-weight: 600; color: var(--text-primary); position: relative; padding: 0.5rem 0;}
+        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; border-radius: 2px; background: linear-gradient(90deg, var(--accent-pink), var(--accent-gold)); transition: width var(--transition-base); }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .hamburger span { width: 24px; height: 3px; background-color: var(--text-primary); border-radius: 2px; transition: var(--transition-base); }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            padding: 6rem var(--space-lg) var(--space-2xl);
+            background: linear-gradient(-45deg, #fff5f8, #fdfbfb, #f3e7e9, #ffecd2); background-size: 400% 400%; animation: gradientBG 12s ease infinite; position: relative; overflow: hidden;
+        }
+        .hero-shapes .shape { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.5; animation: float 8s ease-in-out infinite; z-index: 0;}
+        .shape-1 { width: 400px; height: 400px; background: var(--accent-pink-alt); top: -100px; right: -50px; }
+        .shape-2 { width: 350px; height: 350px; background: var(--accent-gold); bottom: -50px; left: -50px; animation-delay: 2s; }
+        @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-30px) scale(1.05); } }
+
+        .hero-container { max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; z-index: 1; position: relative; }
+        .hero-headline { font-family: 'Montserrat', sans-serif; font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.2rem; letter-spacing: -1.5px; }
+        .text-gradient { background: linear-gradient(135deg, var(--accent-pink), #c2185b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .text-gradient-alt { background: linear-gradient(135deg, #f5af19, #f12711); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subheadline { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 700; color: #333; margin-bottom: 1rem; }
+        .hero-description { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 2.5rem; max-width: 500px; font-weight: 500;}
+
+        @keyframes shine { 0% { left: -100%; } 20% { left: 100%; } 100% { left: 100%; } }
+        .cta-buttons { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .btn { padding: 1.2rem 2.5rem; border: none; border-radius: 50px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.05rem; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.8rem; position: relative; overflow: hidden; }
+        .btn-primary { background: linear-gradient(135deg, var(--accent-pink), #ff0844); color: white; box-shadow: var(--shadow-md); }
+        .btn-primary::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%); transform: skewX(-25deg); animation: shine 3s infinite; }
+        .btn-primary:hover { transform: translateY(-5px) scale(1.02); box-shadow: var(--shadow-glow); }
+        .btn-secondary { background: rgba(255, 255, 255, 0.9); color: var(--accent-pink); border: 2px solid transparent; box-shadow: var(--shadow-sm); }
+        .btn-secondary:hover { transform: translateY(-5px); background: white; border-color: var(--accent-pink); }
+
+        .hero-images { display: flex; gap: 2rem; position: relative; }
+        .hero-image-wrapper { position: relative; flex: 1; border-radius: var(--radius-xl); z-index: 2;}
+        .hero-image { width: 100%; height: 380px; object-fit: cover; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); transition: transform 0.5s ease; border: 4px solid white; }
+        .hero-image-wrapper:hover .hero-image { transform: scale(1.03) rotate(-1deg); }
+        
+        .floating-card { position: absolute; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 1.2rem 1.8rem; border-radius: var(--radius-lg); box-shadow: 0 8px 32px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 1rem; font-weight: 700; color: var(--text-primary); border: 1px solid rgba(255,255,255,0.8); z-index: 3; animation: float 5s ease-in-out infinite; }
+        .floating-card i { font-size: 1.8rem; color: var(--accent-pink); }
+        .card-1 { bottom: 10%; left: -15%; }
+        .card-2 { top: 15%; right: -15%; animation-delay: 1.5s; }
+
+        /* ============================================
+           ANIMATIONS & HEADERS
+           ============================================ */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; opacity: 0; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-title { font-family: 'Montserrat', sans-serif; font-size: 3rem; font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.5px; position: relative; display: inline-block;}
+        .section-subtitle { font-size: 1.2rem; color: var(--text-secondary); font-weight: 500; }
+
+        /* ============================================
+           SERVICES SECTION (3 CARDS - UPDATED IMAGES)
+           ============================================ */
+        .services { padding: var(--space-2xl) var(--space-lg); background: white; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        
+        .service-card { background: var(--secondary-bg); border-radius: var(--radius-lg); overflow: hidden; transition: all 0.4s ease; border: 1px solid transparent; }
+        .service-card:hover { transform: translateY(-15px); box-shadow: var(--shadow-lg); border-color: rgba(232, 28, 98, 0.3); background: white; }
+        .card-image { position: relative; height: 240px; overflow: hidden; }
+        .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .service-card:hover .card-image img { transform: scale(1.1); }
+        
+        .card-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(232, 28, 98, 0.9) 0%, rgba(232, 28, 98, 0.4) 100%); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.4s ease; }
+        .service-card:hover .card-overlay { opacity: 1; }
+        .card-overlay i { font-size: 4rem; color: white; transform: scale(0.5); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .service-card:hover .card-overlay i { transform: scale(1); }
+        
+        .card-content { padding: 2.5rem; }
+        .card-title { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; color: var(--text-primary); }
+        .services-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        .services-list li { display: flex; align-items: center; gap: 0.8rem; font-size: 0.95rem; font-weight: 500; }
+        .services-list i { color: var(--accent-pink); font-size: 1.2rem; }
+        .rental-price { font-size: 2.2rem; font-weight: 800; color: var(--accent-pink); font-family: 'Montserrat', sans-serif; text-shadow: 2px 2px 0px rgba(232,28,98,0.1); }
+
+        /* ============================================
+           GALLERY SECTION
+           ============================================ */
+        .gallery { padding: var(--space-2xl) var(--space-lg); background: var(--secondary-bg); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .gallery-item { position: relative; height: 300px; border-radius: var(--radius-lg); overflow: hidden; cursor: pointer; box-shadow: var(--shadow-sm); transition: 0.4s ease; }
+        .gallery-item:hover { box-shadow: var(--shadow-lg); transform: translateY(-10px); z-index: 10; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
+        .gallery-item:hover img { transform: scale(1.15); filter: brightness(0.7); }
+        .gallery-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 2rem 1rem; background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%); display: flex; align-items: flex-end; justify-content: center; opacity: 0; transition: 0.4s ease; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay span { color: white; font-weight: 700; font-size: 1.3rem; transform: translateY(20px); transition: 0.4s ease; text-shadow: 0 2px 4px rgba(0,0,0,0.5);}
+        .gallery-item:hover .gallery-overlay span { transform: translateY(0); }
+
+        /* ============================================
+           DARK MODE / PISO WIFI SECTION (NO AIRCON LOUNGE)
+           ============================================ */
+        .pisowifi { padding: var(--space-2xl) var(--space-lg); background: var(--dark-bg); color: var(--text-white); position: relative; }
+        .pisowifi .section-title { color: white; text-shadow: var(--shadow-glow); }
+        .pisowifi .section-title i { color: var(--accent-pink); }
+        .pisowifi .section-subtitle { color: #cbd5e1; }
+        
+        @keyframes pulseAlert { 0% { box-shadow: 0 0 0 0 rgba(232, 28, 98, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(232, 28, 98, 0); } 100% { box-shadow: 0 0 0 0 rgba(232, 28, 98, 0); } }
+        .availability-badge { display: inline-block; background: var(--accent-pink); color: white; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 700; font-size: 1rem; margin-top: 1.5rem; animation: pulseAlert 2s infinite; letter-spacing: 1px; }
+
+        .wifi-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+        .feature-card { background: var(--dark-card); padding: 2.5rem 1.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.1); text-align: center; transition: all 0.4s ease; }
+        .feature-card:hover { transform: translateY(-10px); background: #27354f; border-color: var(--accent-cyan); box-shadow: 0 0 20px rgba(0, 242, 254, 0.2); }
+        .feature-card i { font-size: 3rem; color: var(--accent-cyan); margin-bottom: 1.5rem; text-shadow: 0 0 10px rgba(0,242,254,0.5); }
+        .feature-card h4 { font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 0.8rem; }
+        .feature-card p { color: #94a3b8; font-size: 0.95rem; }
+
+        .pricing-table-container { background: var(--dark-card); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); margin-bottom: 2.5rem; border: 1px solid rgba(255,255,255,0.05); }
+        .pricing-table { width: 100%; border-collapse: collapse; }
+        .pricing-table thead { background: linear-gradient(135deg, #1e293b, #0f172a); border-bottom: 2px solid var(--accent-pink); }
+        .pricing-table th { padding: 1.5rem; text-align: left; font-weight: 800; font-size: 1.1rem; color: white; text-transform: uppercase; letter-spacing: 1px;}
+        .pricing-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.3s ease; }
+        .pricing-table tbody tr:hover { background-color: rgba(232, 28, 98, 0.1); }
+        .pricing-table td { padding: 1.5rem; color: #cbd5e1; font-weight: 500; font-size: 1.05rem;}
+        
+        .promo-highlight { background: rgba(255, 215, 0, 0.1) !important; border-left: 4px solid var(--accent-gold); }
+        .promo-highlight td { color: white; font-weight: 700; }
+        .plan-price { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; color: var(--accent-gold) !important; font-weight: 800; text-shadow: 0 0 10px rgba(255,215,0,0.3);}
+
+        @keyframes pulseGlow { 0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.6); transform: scale(1); } 70% { box-shadow: 0 0 0 20px rgba(255, 215, 0, 0); transform: scale(1.05); } 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); transform: scale(1); } }
+        .promo-badge { background: linear-gradient(135deg, var(--accent-gold), #ffa000); color: #000; padding: 1.2rem 3rem; border-radius: 50px; font-weight: 800; font-size: 1.1rem; display: inline-flex; align-items: center; gap: 1rem; margin: 0 auto; animation: pulseGlow 2.5s infinite; text-transform: uppercase; }
+
+        /* ============================================
+           CONTACT SECTION
+           ============================================ */
+        .contact { padding: var(--space-2xl) var(--space-lg); background: white; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .contact-card { background: var(--secondary-bg); padding: 2rem; border-radius: var(--radius-lg); border-left: 5px solid var(--accent-pink); transition: 0.4s ease; display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1.5rem; }
+        .contact-card:hover { transform: translateX(10px); box-shadow: var(--shadow-md); background: white;}
+        .contact-card-icon { font-size: 2rem; color: var(--accent-pink); min-width: 50px; text-align: center; }
+        .contact-card-content h3 { font-size: 1.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .contact-card-content a { color: var(--accent-pink); font-weight: 700; font-size: 1.1rem;}
+        .social-link { background: linear-gradient(135deg, #1877F2, #0e5a2); color: white; padding: 1rem 1.8rem; border-radius: 50px; font-weight: 700; display: inline-flex; align-items: center; gap: 0.8rem; transition: 0.3s ease; box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3); }
+        .social-link:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 8px 25px rgba(24, 119, 242, 0.5); }
+        .contact-map { border-radius: var(--radius-lg); overflow: hidden; height: 100%; min-height: 400px; box-shadow: var(--shadow-lg); border: 4px solid var(--secondary-bg);}
+
+        /* UPGRADED FOOTER */
+        .footer {
+            background: linear-gradient(180deg, #111827 0%, #030712 100%);
+            color: #f3f4f6; padding: 5rem var(--space-lg) 2rem;
+            position: relative;
+        }
+        .footer::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px;
+            background: linear-gradient(90deg, var(--accent-pink), var(--accent-gold), var(--accent-cyan));
+        }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4rem; margin-bottom: 4rem; }
+        .footer-section h4 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.3rem; color: white; margin-bottom: 1.5rem; letter-spacing: 0.5px; }
+        .footer-section p { color: #9ca3af; font-size: 0.95rem; line-height: 1.8; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links li a { color: #9ca3af; font-size: 0.95rem; transition: 0.3s ease; display: inline-block; }
+        .footer-links li a:hover { color: var(--accent-gold); transform: translateX(8px); }
+        .contact-info-list { list-style: none; }
+        .contact-info-list li { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; color: #9ca3af; font-size: 0.95rem; }
+        .contact-info-list i { color: var(--accent-pink); font-size: 1.2rem; margin-top: 3px; }
+        .footer-social { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .footer-social a {
+            display: flex; align-items: center; justify-content: center;
+            width: 45px; height: 45px; border-radius: 50%;
+            background: rgba(255,255,255,0.05); color: white; font-size: 1.2rem;
+            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-social a:hover {
+            background: var(--accent-pink); border-color: var(--accent-pink);
+            transform: translateY(-5px); box-shadow: 0 10px 20px rgba(232, 28, 98, 0.4);
+        }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem; text-align: center; color: #6b7280; font-size: 0.9rem; }
+
+        /* LIGHTBOX */
+        .lightbox { position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: 0.3s ease; }
+        .lightbox.active { opacity: 1; visibility: visible; }
+        .lightbox-content { max-width: 90%; max-height: 85vh; border-radius: var(--radius-md); box-shadow: 0 0 50px rgba(0,0,0,0.8); transform: scale(0.9); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 2px solid rgba(255,255,255,0.1);}
+        .lightbox.active .lightbox-content { transform: scale(1); }
+        .lightbox-close { position: absolute; top: 30px; right: 40px; color: white; font-size: 50px; cursor: pointer; transition: 0.3s ease; text-shadow: 0 0 10px rgba(0,0,0,0.5);}
+        .lightbox-close:hover { color: var(--accent-pink); transform: scale(1.2) rotate(90deg);}
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .hero-container, .contact-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center;}
+            .hero-headline { font-size: 3rem; }
+            .hero-description { margin: 0 auto 2.5rem; }
+            .cta-buttons { justify-content: center; }
+            .floating-card { padding: 0.8rem 1.2rem; font-size: 0.9rem; }
+            .card-1 { bottom: -5%; left: 5%; }
+            .card-2 { top: 5%; right: 5%; }
+        }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-menu { position: absolute; top: 70px; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); flex-direction: column; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+            .nav-menu.active { max-height: 400px; }
+            .nav-menu li { padding: 1.2rem 2rem; border-bottom: 1px solid var(--border-light); width: 100%; text-align: center;}
+            .hero { padding: 8rem 1.5rem 4rem; }
+            .hero-headline { font-size: 2.5rem; }
+            .section-title { font-size: 2.2rem; }
+            .promo-badge { padding: 1rem 1.5rem; font-size: 0.9rem; flex-direction: column; text-align: center; gap: 0.5rem;}
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1 class="logo"><i class="fas fa-print"></i> Ellie 'N Rei</h1>
+            </div>
+            <div class="hamburger" id="hamburger" tabindex="0">
+                <span></span><span></span><span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#pisowifi" class="nav-link">Piso WiFi</a></li>
+                <li><a href="#contact" class="nav-link">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content fade-in-up">
+                <h2 class="hero-headline">
+                    <span class="text-gradient">Print.</span> 
+                    <span class="text-gradient-alt">Connect.</span><br>
+                    Done!
+                </h2>
+                <p class="hero-subheadline">Lahat sa isang tindahan!</p>
+                <p class="hero-description">
+                    High-quality printing, internet cafe, fast Piso WiFi, and complete office/school supplies—all in Gen. Aguinaldo, Cavite.
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" id="ctaExplore">
+                        <i class="fas fa-rocket"></i> Explore Services
+                    </button>
+                    <button class="btn btn-secondary" id="ctaContact">
+                        <i class="fas fa-envelope"></i> Get in Touch
+                    </button>
+                </div>
+            </div>
+            <div class="hero-images fade-in-up" style="animation-delay: 0.2s;">
+                <div class="hero-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&h=500&fit=crop" alt="Premium Printing Services" class="hero-image">
+                    <div class="floating-card card-1"><i class="fas fa-print"></i> Quality Prints</div>
+                </div>
+                <div class="hero-image-wrapper" style="margin-top: 3rem;">
+                    <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&h=500&fit=crop" alt="Internet Cafe Gaming" class="hero-image">
+                    <div class="floating-card card-2"><i class="fas fa-wifi"></i> Internet Cafe</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Our Premium Services</h2>
+                <p class="section-subtitle">Top-notch printing, internet, and office solutions</p>
+            </div>
+            <div class="services-grid">
+                <!-- Printing & Layout Card - NEW IMAGE (high-res printing) -->
+                <div class="service-card fade-in-up">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1562577309-2592ab84b1bc?w=600&h=400&fit=crop" alt="Printing and Layout Services" loading="lazy">
+                        <div class="card-overlay"><i class="fas fa-print"></i></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Printing & Layout</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">Professional, clear, and vibrant prints for personal or business use.</p>
+                        <ul class="services-list">
+                            <li><i class="fas fa-check-circle"></i> Tarpaulin & Calling Cards</li>
+                            <li><i class="fas fa-check-circle"></i> Flyers, Brochures, Stickers</li>
+                            <li><i class="fas fa-check-circle"></i> PVC ID Cards & Documents</li>
+                            <li><i class="fas fa-check-circle"></i> T-Shirt & Mug Printing</li>
+                            <li><i class="fas fa-check-circle"></i> Lamination & Scanning</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Internet Cafe Card (formerly Computer Rental) - image replaced, title changed -->
+                <div class="service-card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1604641712270-f89d71c1fd2c?w=600&h=400&fit=crop" alt="Internet Cafe high-performance PCs" loading="lazy">
+                        <div class="card-overlay"><i class="fas fa-desktop"></i></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Internet Cafe & Gaming</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">High-performance PCs with blazing fast connection for gaming, research, and online class.</p>
+                        <div style="background: rgba(232, 28, 98, 0.05); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px dashed var(--accent-pink);">
+                            <div class="rental-price">₱20<span style="font-size: 1rem; color: #666;">/hour</span></div>
+                            <p style="font-weight: 700; color: #333;"><i class="fas fa-microchip" style="color:var(--accent-pink);"></i> Ryzen 5 + Gaming Rigs</p>
+                        </div>
+                        <p style="font-weight: 600;"><i class="fas fa-headset" style="color:var(--accent-pink);"></i> Unli coffee shop vibes • Free WiFi • Piso net access</p>
+                    </div>
+                </div>
+
+                <!-- School & Office Supplies Card - updated image -->
+                <div class="service-card fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1527866959268-ebaf5bf97f8c?w=600&h=400&fit=crop" alt="School and Office Supplies" loading="lazy">
+                        <div class="card-overlay"><i class="fas fa-pencil-ruler"></i></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">School & Office Supplies</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">Complete selection of educational and office materials for your daily needs.</p>
+                        <ul class="services-list">
+                            <li><i class="fas fa-book"></i> Notebooks & Planners</li>
+                            <li><i class="fas fa-pen"></i> Pens, Pencils & Markers</li>
+                            <li><i class="fas fa-paperclip"></i> Folders & Envelopes</li>
+                            <li><i class="fas fa-copy"></i> Bond Papers & Specialty Papers</li>
+                            <li><i class="fas fa-palette"></i> Art Materials</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Our Work Gallery</h2>
+                <p class="section-subtitle">Click to view our high-quality output</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in-up" data-src="https://images.unsplash.com/photo-1563452675059-efa1e2e7a787?w=1200&h=800&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1563452675059-efa1e2e7a787?w=400&h=400&fit=crop" alt="Tarpaulin" loading="lazy">
+                    <div class="gallery-overlay"><span><i class="fas fa-expand"></i> Tarpaulin</span></div>
+                </div>
+                <div class="gallery-item fade-in-up" style="animation-delay: 0.1s;" data-src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=1200&h=800&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=400&h=400&fit=crop" alt="Business Cards" loading="lazy">
+                    <div class="gallery-overlay"><span><i class="fas fa-expand"></i> Calling Cards</span></div>
+                </div>
+                <div class="gallery-item fade-in-up" style="animation-delay: 0.2s;" data-src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1200&h=800&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop" alt="T-Shirt" loading="lazy">
+                    <div class="gallery-overlay"><span><i class="fas fa-expand"></i> Shirt Printing</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pisowifi" id="pisowifi">
+        <div class="container">
+            <div class="section-header fade-in-up" style="margin-bottom: 2rem;">
+                <h2 class="section-title"><i class="fas fa-wifi"></i> Vendo Piso WiFi</h2>
+                <p class="section-subtitle">Mabilis. Sulit. Walang Buffering.</p>
+                <!-- UPDATED: removed AIRCON, explicit non-aircon lounge -->
+                <div class="availability-badge"><i class="fas fa-bolt"></i> OPEN 24/7 • LOUNGE (Non-Aircon)</div>
+            </div>
+
+            <div class="wifi-features fade-in-up">
+                <div class="feature-card">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h4>Ultra Fast Speed</h4>
+                    <p>Good for gaming, Netflix, and TikTok.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-pause-circle"></i>
+                    <h4>Pause Time</h4>
+                    <p>Uwi ka muna? Pause mo lang ang oras mo!</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Anti-Lag System</h4>
+                    <p>Dedicated bandwidth para iwas lag sa laro.</p>
+                </div>
+            </div>
+
+            <div class="pricing-wrapper fade-in-up" style="text-align: center;">
+                <div class="pricing-table-container">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr><th>Duration</th><th>Price</th><th>Features</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr class="promo-highlight"><td>30 Minutes</td><td class="plan-price">₱1</td><td>Unlimited Bandwidth + Pause</td></tr>
+                            <tr><td>1 Hour</td><td class="plan-price">₱5</td><td>Unlimited Bandwidth + Pause</td></tr>
+                            <tr><td>2 Hours</td><td class="plan-price">₱10</td><td>Unlimited Bandwidth + Pause</td></tr>
+                            <tr><td>5 Hours</td><td class="plan-price">₱20</td><td>Unlimited Bandwidth + Pause</td></tr>
+                            <tr><td>1 Day (24 Hrs)</td><td class="plan-price">₱50</td><td>Unlimited Bandwidth + Pause</td></tr>
+                            <tr><td>30 Days (VIP)</td><td class="plan-price">₱300</td><td>Unli Net for 1 Month!</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="promo-badge">
+                    <i class="fas fa-fire fa-lg"></i> MEGA PROMO: ₱1 = 30 MINS UNLIMITED!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Visit Us Today</h2>
+                <p class="section-subtitle">Laging handang maglingkod sa inyo</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info fade-in-up">
+                    <div class="contact-card">
+                        <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-card-content">
+                            <h3>Store Location</h3>
+                            <p>Barangay Lumipa<br>Gen. Aguinaldo, Cavite</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon"><i class="fas fa-phone-volume"></i></div>
+                        <div class="contact-card-content">
+                            <h3>Call / Text Us</h3>
+                            <p><a href="tel:09161718368">0916 171 8368</a><br><a href="tel:09625396645">0962 539 6645</a><br>Landline: <a href="tel:0468852128">046 885 2128</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-card" style="border-left-color: #1877F2; background: #f0f8ff;">
+                        <div class="contact-card-icon"><i class="fab fa-facebook-messenger" style="color: #1877F2;"></i></div>
+                        <div class="contact-card-content">
+                            <h3>Message Us Online</h3>
+                            <div class="social-links" style="margin-top: 10px;">
+                                <a href="https://www.facebook.com/profile.php?id=100069883522861" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i> FB Page</a>
+                                <a href="https://m.me/100069883522861" target="_blank" class="social-link" style="background: linear-gradient(135deg, #00B2FF, #006AFF);"><i class="fab fa-facebook-messenger"></i> Message</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map fade-in-up" style="animation-delay: 0.2s;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15474.332306231015!2d120.7876807!3d14.1611756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd82c61bcab37f%3A0x6e2e5f8f8b8a8b8a!2sLumipa%2C%20General%20Emilio%20Aguinaldo%2C%20Cavite!5e0!3m2!1sen!2sph!4v1680000000000!5m2!1sen!2sph" width="100%" height="100%" style="border:none;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+       <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-print" style="color: var(--accent-pink); margin-right: 8px;"></i> Ellie 'N Rei</h4>
+                    <p>Your trusted partner for premium printing, internet cafe, and ultra-fast Piso WiFi solutions in Gen. Aguinaldo, Cavite. "Lahat sa isang tindahan!"</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/profile.php?id=100069883522861" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://m.me/100069883522861" target="_blank" aria-label="Messenger"><i class="fab fa-facebook-messenger"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right" style="font-size: 0.8rem; margin-right: 8px;"></i> Home</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right" style="font-size: 0.8rem; margin-right: 8px;"></i> Our Services</a></li>
+                        <li><a href="#gallery"><i class="fas fa-chevron-right" style="font-size: 0.8rem; margin-right: 8px;"></i> Project Gallery</a></li>
+                        <li><a href="#pisowifi"><i class="fas fa-chevron-right" style="font-size: 0.8rem; margin-right: 8px;"></i> Piso WiFi Promos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-info-list">
+                        <li><i class="fas fa-map-marker-alt"></i> <span>Barangay Lumipa, Gen. Aguinaldo, Cavite</span></li>
+                        <li><i class="fas fa-phone-alt"></i> <span>0916 171 8368<br>0962 539 6645</span></li>
+                        <li><i class="fas fa-clock"></i> <span>Open 24/7 for Piso WiFi & Internet Cafe</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Ellie 'N Rei Sa Labak Printing & Internet Cafe. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">×</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+        
+        document.getElementById('ctaExplore').addEventListener('click', () => {
+            document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('ctaContact').addEventListener('click', () => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = entry.target.getAttribute('data-delay') || '0s';
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-up').forEach((el, i) => {
+            if(!el.style.animationDelay) el.setAttribute('data-delay', `${(i%3) * 0.15}s`);
+            observer.observe(el);
+        });
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                lightboxImg.src = this.getAttribute('data-src');
+                lightbox.classList.add('active');
+            });
+        });
+        
+        document.querySelector('.lightbox-close').addEventListener('click', () => lightbox.classList.remove('active'));
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) lightbox.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
